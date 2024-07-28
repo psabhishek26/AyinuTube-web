@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 
 function ShareForward() {
   const { shareId } = useParams();
-  console.log("id: ", shareId);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -23,12 +22,14 @@ function ShareForward() {
         </div>
         <h3 className="title">Check out this video</h3>
         {isMobile ? (
-          <Link to={`ayinutube://watch/${shareId}`}>
-            <button className="openButton">Open in app</button>
+          <>
+            <Link to={`ayinutube://watch/${shareId}`}>
+              <button className="openButton">Open in app</button>
+            </Link>
             <p className="warningMessage">
               Note: To access this content, please install the AyinuTube app.
             </p>
-          </Link>
+          </>
         ) : (
           <p className="warningMessage">This feature is not available on PC.</p>
         )}
